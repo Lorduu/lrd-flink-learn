@@ -31,11 +31,11 @@ public class KafkaFlinkTest {
 
 			.flatMap(new Splitter())
 			.keyBy(0)
-			.timeWindow(Time.seconds(10),Time.seconds(5))
+			.timeWindow(Time.seconds(10),Time.seconds(10))
 			.apply(new WindowFunction<Tuple2<String, Integer>, Tuple2<String, Integer>, Tuple, TimeWindow>() {
 				@Override
 				public void apply(Tuple tuple, TimeWindow window, Iterable<Tuple2<String, Integer>> input, Collector<Tuple2<String, Integer>> out) throws Exception {
-					
+
 				}
 			});
 		input.print();
